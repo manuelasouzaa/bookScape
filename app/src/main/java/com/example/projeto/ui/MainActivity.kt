@@ -21,26 +21,28 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        val search = binding.editText.text
+        val search = binding.editText.text;
 
 
-            binding.search.setOnClickListener {
-                lifecycleScope.launch(IO) {
-                    launch {
-                        try {
+        binding.search.setOnClickListener {
+            lifecycleScope.launch(IO) {
+                launch {
+                    try {
+
                         val lista = Retrofit().webService.buscaLivros(search.toString())
                         Log.i("Resultado", "onCreate: $lista")
-                        } catch (e: Exception) {
-                            Log.e("TAG", "onCreate: falha", e)
-                        }
+
+                    } catch (e: Exception) {
+
+                        Log.e("TAG", "onCreate: falha", e)
+
                     }
                 }
             }
+        }
 
-
-//  chave api = AIzaSyBD8He6r1sESa1GIpK0Ei61kwJ0_7QbgMs
+    //  chave api = AIzaSyBD8He6r1sESa1GIpK0Ei61kwJ0_7QbgMs
 
     }
-
 
 }
